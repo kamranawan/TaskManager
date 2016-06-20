@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>
+	<%= check_box_tag :task_done, "", @task.done %>
+    <%= @task.title %>
+</h1>
+
+<p>
+	<strong>Project:</strong>
+	<%= link_to @task.project.name, @task.project %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_project_path(@task) %> |
+<%= link_to 'Back', projects_path %>
+
+<h2>Comments</h2>
+
+<ol>
+	<% @task.Comments.each do |comment| %>
+	<li>
+		<h3><%= comment.name %></h3>
+		<blockquote><%= comment.body %></blockquote>
+	</li>
+	<% end %>
+</ol>
+
+<%= form_for([ @task, @task.comments.build ]) do |f| %>
+<% end %>
